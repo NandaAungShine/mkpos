@@ -24,15 +24,8 @@ jobs:
         pip install customtkinter pillow tkcalendar openpyxl pyinstaller
 
     - name: Build EXE with PyInstaller
-      run: |
-        pyinstaller --onefile --windowed ^
-          --add-data "real;real" ^
-          --add-data "fonts;fonts" ^
-          --add-data "Logo.png;." ^
-          --add-data "logoicon.ico;." ^
-          --add-data "font_loader.py;." ^
-          --icon logoicon.ico ^
-          mkpos.py
+      shell: cmd
+      run: pyinstaller --onefile --windowed --add-data "real;real" --add-data "fonts;fonts" --add-data "Logo.png;." --add-data "logoicon.ico;." --add-data "font_loader.py;." --icon logoicon.ico mkpos.py
 
     - name: Upload EXE artifact
       uses: actions/upload-artifact@v4
